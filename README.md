@@ -3,19 +3,23 @@ This repository contains files for a simple simulation of the flow and energy us
 It also has some code for running a basic RL experiment on this environment.
 
 ## Running the simulation
-First you need to set up the environment, a suggestion is to use some kind of virtual environment for example conda. We used Miniconda with Python 3.8.5 for our simulations. After setting up the environment you will need to start ray, provided is an example of how to start a local instance of ray. After that is an example of how to start the simulation which will run for 2M steps (each step is one second in the simulated environment).
+First you need to set up the environment, a suggestion is to use some kind of virtual environment for example conda. We used Miniconda with Python 3.8.5 for our simulations and installed the packages with pip.
+
+After setting up the environment you will need to start ray, provided is an example of how to start a local instance of ray. 
+
+Then there are examples of how to start the simulation both with the RL agent controlling everything and with the RL agent controlling nothing (balance load by placing on least utilized server, run CRAH on constant setpoints of 22 degrees and 80% of max flow). This will run for 2M steps where each step is one second in the simulated environment.
 ```
 pip install numpy tensorflow ray ray[rllib] ray[tune] matplotlib seaborn pandas
 ray start --head 
 python src/main.py --stop_iterations 2000000
+python src/main.py --stop_iterations 2000000 --actions none
 ```
 
-### Stop ray
 Ray will run in the background if not stopped which can be done with
 ```
 ray stop
 ```
-### Tensorboard
+## Tensorboard
 Data is by default logged to `~/ray_results/` in tensorboard format, and to view it you can run 
 ```
 tensorboard --logdir ~/ray_results
