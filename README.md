@@ -26,6 +26,9 @@ tensorboard --logdir ~/ray_results
 ```
 after which you navigate to `localhost:6006` (or whatever tensorboard told you) to view the data.
 
+## Figures
+To generate the figures from the article the notebook `visualize.ipynb` was used. Remember to set the ray path and the trial id's for the data you want to plot.
+
 ## Python environment
 This is the python environment used to run the code. It will likely work with other versions, but is documented for completeness.
 ```
